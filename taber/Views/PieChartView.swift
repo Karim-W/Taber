@@ -16,21 +16,18 @@ struct PieChartView: View {
     var body: some View {
         
         VStack{
-            Text("Slices: \(slices.count)")
-            Text("Total: \(Total)")
-            Text("Data: \(Categories["String"] ?? -1.3)")
             GeometryReader { geometry in
                        ZStack{
                            ForEach (slices,id: \.self){ s in
                                PieChartSliceUIView(slice: s)
                            }
                            Circle().fill(Color.white)
-                               .frame(width: geometry.size.width * 0.60, height: geometry.size.width * 0.60)
+                               .frame(width: geometry.size.width * 0.50, height: geometry.size.width * 0.50)
                                 VStack {
                                    Text("Total")
                                        .font(.title)
                                        .foregroundColor(Color.gray)
-                                   Text("\(Total)")
+                                   Text(String(format: "%.1f", Total))
                                        .font(.title)
                                }
                        }
@@ -56,9 +53,9 @@ struct PieChartView: View {
         }
         var index = 0
         var prevAng:Double = 0.0
-        for (_, v) in Categories{
+        for (k, v) in Categories{
             let angleSize:Double = (v/Total) * 360
-            let i = PieChartSlice(startAngle: Angle(degrees: prevAng), endAngle: Angle(degrees: prevAng+angleSize), color:colors[index])
+            let i = PieChartSlice(startAngle: Angle(degrees: prevAng), endAngle: Angle(degrees: prevAng+angleSize), color:colors[index],text: k)
             slices.append(i)
             index += 1
             prevAng=i.endAngle.degrees

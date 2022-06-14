@@ -17,29 +17,12 @@ struct ContentView: View {
     private var items: FetchedResults<Item>
 
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
-                    }
-                }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-            Text("Select an item")
-        }
+       PieChartView(expenses: [
+           Expense(Price: 300, PaymentDate: Date.now, Category: "Rent", Subject: "String", IsSubscription: false, Details: "String"),
+           Expense(Price: 120, PaymentDate: Date.now, Category: "Transport", Subject: "String", IsSubscription: false, Details: "String"),
+           Expense(Price: 120, PaymentDate: Date.now, Category: "Transport", Subject: "Stringo", IsSubscription: false, Details: "String"),
+           Expense(Price: 120, PaymentDate: Date.now, Category: "Food", Subject: "String", IsSubscription: false, Details: "String")
+       ])
     }
 
     private func addItem() {
