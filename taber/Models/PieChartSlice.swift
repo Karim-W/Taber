@@ -6,3 +6,10 @@
 //
 
 import Foundation
+import SwiftUI
+
+struct PieChartSlice:Hashable {
+    var startAngle: Angle
+    var endAngle: Angle
+    var color: Color
+}
