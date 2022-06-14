@@ -17,12 +17,26 @@ struct ContentView: View {
     private var items: FetchedResults<Item>
 
     var body: some View {
-       PieChartView(expenses: [
-           Expense(Price: 300, PaymentDate: Date.now, Category: "Rent", Subject: "String", IsSubscription: false, Details: "String"),
-           Expense(Price: 120, PaymentDate: Date.now, Category: "Transport", Subject: "String", IsSubscription: false, Details: "String"),
-           Expense(Price: 120, PaymentDate: Date.now, Category: "Transport", Subject: "Stringo", IsSubscription: false, Details: "String"),
-           Expense(Price: 120, PaymentDate: Date.now, Category: "Food", Subject: "String", IsSubscription: false, Details: "String")
-       ])
+        VStack{
+            ZStack{
+                Rectangle().foregroundColor(Color(UIColor.systemIndigo)).shadow(color: .red, radius: 5, x: .infinity, y: .infinity)
+                VStack{
+                    Spacer()
+                    HStack{
+                        Spacer()
+                        Text("Taber").fontWeight(.light).font(.largeTitle).foregroundColor(Color.black)
+                        Spacer()
+                    }.padding(.bottom)
+                }
+            }.frame(width: .infinity, height: 100.0)
+            PieChartView(expenses: [
+                Expense(Price: 300, PaymentDate: Date.now, Category: "Rent", Subject: "String", IsSubscription: false, Details: "String"),
+                Expense(Price: 120, PaymentDate: Date.now, Category: "Transport", Subject: "String", IsSubscription: false, Details: "String"),
+                Expense(Price: 120, PaymentDate: Date.now, Category: "Transport", Subject: "Stringo", IsSubscription: false, Details: "String"),
+                Expense(Price: 120, PaymentDate: Date.now, Category: "Food", Subject: "String", IsSubscription: false, Details: "String")
+            ])
+        }.edgesIgnoringSafeArea(.all)
+       
     }
 
     private func addItem() {
@@ -68,4 +82,22 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
+}
+
+extension UIColor {
+   convenience init(red: Int, green: Int, blue: Int) {
+       assert(red >= 0 && red <= 255, "Invalid red component")
+       assert(green >= 0 && green <= 255, "Invalid green component")
+       assert(blue >= 0 && blue <= 255, "Invalid blue component")
+
+       self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+   }
+
+   convenience init(rgb: Int) {
+       self.init(
+           red: (rgb >> 16) & 0xFF,
+           green: (rgb >> 8) & 0xFF,
+           blue: rgb & 0xFF
+       )
+   }
 }

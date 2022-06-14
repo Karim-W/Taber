@@ -13,6 +13,7 @@ struct PieChartView: View {
     let colors = [Color.blue,Color.green,Color.yellow,Color.orange,Color.red,Color.pink,Color.purple]
     @State var Total: Double = 0.0
     @State var slices:[PieChartSlice] = []
+    @State var TEntries:[PieTableEntry] = []
     var body: some View {
         
         VStack{
