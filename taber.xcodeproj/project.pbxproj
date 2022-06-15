@@ -18,6 +18,7 @@
 		8A3502692858199C00858DFE /* PieChartUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3502682858199C00858DFE /* PieChartUIView.swift */; };
 		8A35026B28581A0300858DFE /* PieChartSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35026A28581A0300858DFE /* PieChartSlice.swift */; };
 		8A35026D285844D800858DFE /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35026C285844D800858DFE /* PieChartView.swift */; };
+		8A38C4E4285A274E007E6A14 /* PieChartLegend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A38C4E3285A274E007E6A14 /* PieChartLegend.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		8A3502682858199C00858DFE /* PieChartUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartUIView.swift; sourceTree = "<group>"; };
 		8A35026A28581A0300858DFE /* PieChartSlice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartSlice.swift; sourceTree = "<group>"; };
 		8A35026C285844D800858DFE /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
+		8A38C4E3285A274E007E6A14 /* PieChartLegend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartLegend.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			children = (
 				8A3502682858199C00858DFE /* PieChartUIView.swift */,
 				8A35026C285844D800858DFE /* PieChartView.swift */,
+				8A38C4E3285A274E007E6A14 /* PieChartLegend.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A38C4E4285A274E007E6A14 /* PieChartLegend.swift in Sources */,
 				8A35026D285844D800858DFE /* PieChartView.swift in Sources */,
 				8A35026B28581A0300858DFE /* PieChartSlice.swift in Sources */,
 				8A3502692858199C00858DFE /* PieChartUIView.swift in Sources */,

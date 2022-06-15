@@ -18,22 +18,24 @@ struct PieChartView: View {
         
         VStack{
             GeometryReader { geometry in
-                       ZStack{
-                           ForEach (slices,id: \.self){ s in
-                               PieChartSliceUIView(slice: s)
-                           }
-                           Circle().fill(Color.white)
-                               .frame(width: geometry.size.width * 0.50, height: geometry.size.width * 0.50)
-                                VStack {
-                                   Text("Total")
-                                       .font(.title)
-                                       .foregroundColor(Color.gray)
-                                   Text(String(format: "%.1f", Total))
-                                       .font(.title)
-                               }
-                       }
-
+               ZStack{
+                   ForEach (slices,id: \.self){ s in
+                       PieChartSliceUIView(slice: s)
                    }
+                   Circle().fill(Color.init(red: 15/255, green: 118/255, blue: 110/255))
+                       .frame(width: geometry.size.width * 0.50, height: geometry.size.width * 0.50)
+                        VStack {
+                           Text("Total")
+                               .font(.title)
+                               .foregroundColor(Color.gray)
+                           Text(String(format: "%.1f", Total))
+                               .font(.title)
+                       }
+               }
+            }.frame(width: .infinity, height: 400)
+            PieChartLegend(items: TEntries)
+            Spacer()
+            
         }.onAppear {
             ComputeTotal()
         }
@@ -57,9 +59,17 @@ struct PieChartView: View {
         for (k, v) in Categories{
             let angleSize:Double = (v/Total) * 360
             let i = PieChartSlice(startAngle: Angle(degrees: prevAng), endAngle: Angle(degrees: prevAng+angleSize), color:colors[index],text: k)
+            let ii = PieTableEntry(name: k, percentage: v/Total, color: colors[index])
             slices.append(i)
+            TEntries.append(ii)
             index += 1
             prevAng=i.endAngle.degrees
+        }
+        TEntries = TEntries.sorted(by: { l, r in
+            return l.percentage > r.percentage
+        })
+        slices = slices.sorted { l, r in
+            return l.text > r.text
         }
         print(slices)
     }
@@ -73,5 +83,6 @@ struct PieChartView_Previews: PreviewProvider {
             Expense(Price: 120, PaymentDate: Date.now, Category: "hehue", Subject: "Stringo", IsSubscription: false, Details: "String"),
             Expense(Price: 120, PaymentDate: Date.now, Category: "hehe", Subject: "String", IsSubscription: false, Details: "String")
         ])
+            .preferredColorScheme(.dark)
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct PieTableEntry {
+struct PieTableEntry:Hashable {
     var name:String
     var percentage:Double
     var color:Color
