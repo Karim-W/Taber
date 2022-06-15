@@ -19,6 +19,7 @@
 		8A35026B28581A0300858DFE /* PieChartSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35026A28581A0300858DFE /* PieChartSlice.swift */; };
 		8A35026D285844D800858DFE /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35026C285844D800858DFE /* PieChartView.swift */; };
 		8A38C4E4285A274E007E6A14 /* PieChartLegend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A38C4E3285A274E007E6A14 /* PieChartLegend.swift */; };
+		8A916FCF285A6BDC007737DC /* MainUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916FCE285A6BDC007737DC /* MainUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		8A35026A28581A0300858DFE /* PieChartSlice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartSlice.swift; sourceTree = "<group>"; };
 		8A35026C285844D800858DFE /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		8A38C4E3285A274E007E6A14 /* PieChartLegend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartLegend.swift; sourceTree = "<group>"; };
+		8A916FCE285A6BDC007737DC /* MainUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 		8A3502502858174500858DFE /* taber */ = {
 			isa = PBXGroup;
 			children = (
+				8A916FCD285A6BC6007737DC /* Pages */,
 				8A3502672858198000858DFE /* Views */,
 				8A350264285817C200858DFE /* Models */,
 				8A3502512858174500858DFE /* taberApp.swift */,
@@ -105,6 +108,14 @@
 				8A38C4E3285A274E007E6A14 /* PieChartLegend.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		8A916FCD285A6BC6007737DC /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				8A916FCE285A6BDC007737DC /* MainUIView.swift */,
+			);
+			path = Pages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +193,7 @@
 				8A35026B28581A0300858DFE /* PieChartSlice.swift in Sources */,
 				8A3502692858199C00858DFE /* PieChartUIView.swift in Sources */,
 				8A350266285817E000858DFE /* expense.swift in Sources */,
+				8A916FCF285A6BDC007737DC /* MainUIView.swift in Sources */,
 				8A35025E2858174800858DFE /* taber.xcdatamodeld in Sources */,
 				8A35025B2858174800858DFE /* Persistence.swift in Sources */,
 				8A3502542858174500858DFE /* ContentView.swift in Sources */,

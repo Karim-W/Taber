@@ -10,6 +10,8 @@ import SwiftUI
 struct PieChartLegend: View {
     var items:[PieTableEntry]
     var body: some View {
+        ZStack{
+            Color.init(red: 15/255, green: 118/255, blue: 110/255)
         VStack{
             ForEach (items,id: \.self){ item in
                 HStack{
@@ -24,6 +26,8 @@ struct PieChartLegend: View {
                 Divider().frame( height: 2).overlay(.white)
             }
         }
+        }.edgesIgnoringSafeArea(.all)
+        
     }
 }
 

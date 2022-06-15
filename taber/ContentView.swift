@@ -12,31 +12,8 @@ struct ContentView: View {
     var body: some View {
         ZStack{
             Color.init(red: 15/255, green: 118/255, blue: 110/255)
-            VStack{
-               
-                ZStack{
-                    Color.init(red: 19/255, green: 78/255, blue: 74/255)
-                    VStack{
-                        Spacer()
-                        HStack{
-                            Spacer()
-                            Text("Taber").fontWeight(.light).font(.largeTitle).foregroundColor(Color.white)
-                            Spacer()
-                        }.padding(.bottom)
-                    }
-                }.frame(width: .infinity, height: 100.0)
-                HStack{
-                    Spacer()
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 16).foregroundColor(Color.white)
-                        HStack{
-                            Text("Home")
-                            Divider()
-                            Text("Logs")
-                        }.foregroundColor(Color.black)
-                    }.frame(width:120,height: 40.0).padding()
-                    Spacer()
-                }
+            HStack{
+                Spacer()
                 PieChartView(expenses: [
                     Expense(Price: 300, PaymentDate: Date.now, Category: "Rent", Subject: "String", IsSubscription: false, Details: "String"),
                     Expense(Price: 120, PaymentDate: Date.now, Category: "Transport", Subject: "String", IsSubscription: false, Details: "String"),
@@ -45,8 +22,8 @@ struct ContentView: View {
                     Expense(Price: 190, PaymentDate: Date.now, Category: "Fees", Subject: "String", IsSubscription: false, Details: "String"),
                     Expense(Price: 90, PaymentDate: Date.now, Category: "Cable", Subject: "String", IsSubscription: false, Details: "String")
                 ])
-            }.edgesIgnoringSafeArea(.all).foregroundColor(Color.white)
-        }.edgesIgnoringSafeArea(.all).foregroundColor(Color.white)
+            }
+        }
         
     }
 }

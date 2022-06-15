@@ -32,13 +32,13 @@ struct PieChartView: View {
                                .font(.title)
                        }
                }
-            }.frame(width: .infinity, height: 400)
+            }
             PieChartLegend(items: TEntries)
             Spacer()
             
         }.onAppear {
             ComputeTotal()
-        }
+        }.edgesIgnoringSafeArea(.all)
     }
     
     //MARK: Functions
