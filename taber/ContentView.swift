@@ -13,7 +13,6 @@ struct ContentView: View {
         ZStack{
             Color.init(red: 15/255, green: 118/255, blue: 110/255)
             HStack{
-                Spacer()
                 PieChartView(expenses: [
                     Expense(Price: 300, PaymentDate: Date.now, Category: "Rent", Subject: "String", IsSubscription: false, Details: "String"),
                     Expense(Price: 120, PaymentDate: Date.now, Category: "Transport", Subject: "String", IsSubscription: false, Details: "String"),

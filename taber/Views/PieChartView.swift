@@ -17,25 +17,27 @@ struct PieChartView: View {
     var body: some View {
         
         VStack{
-            GeometryReader { geometry in
-               ZStack{
-                   ForEach (slices,id: \.self){ s in
-                       PieChartSliceUIView(slice: s)
-                   }
-                   Circle().fill(Color.init(red: 15/255, green: 118/255, blue: 110/255))
-                       .frame(width: geometry.size.width * 0.50, height: geometry.size.width * 0.50)
+            HStack{
+                Spacer(minLength: 30)//ik this is bad, idk with so skewed 
+                GeometryReader { geometry in
+                    ZStack{
+                        ForEach (slices,id: \.self){ s in
+                            PieChartSliceUIView(slice: s)
+                        }
+                        Circle().fill(Color.init(red: 15/255, green: 118/255, blue: 110/255))
+                            .frame(width: geometry.size.width * 0.45, height: geometry.size.width * 0.45)
                         VStack {
-                           Text("Total")
-                               .font(.title)
-                               .foregroundColor(Color.gray)
-                           Text(String(format: "%.1f", Total))
-                               .font(.title)
-                       }
-               }
+                            Text("Total")
+                                .font(.title)
+                                .foregroundColor(Color.gray)
+                            Text(String(format: "%.1f", Total))
+                                .font(.title)
+                        }
+                    }
+                }
+                
             }
             PieChartLegend(items: TEntries)
-            Spacer()
-            
         }.onAppear {
             ComputeTotal()
         }.edgesIgnoringSafeArea(.all)
@@ -44,7 +46,7 @@ struct PieChartView: View {
     //MARK: Functions
     func ComputeTotal(){
         Total=0
-    Categories = [:]
+        Categories = [:]
         
         for e in expenses{
             Total += e.Price
