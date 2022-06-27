@@ -9,28 +9,18 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    @State var expenses:[Expense]
     var body: some View {
         ZStack{
-            Color.init(red: 15/255, green: 118/255, blue: 110/255)
-            HStack{
-                PieChartView(expenses: [
-                    Expense(Price: 300, PaymentDate: Date.now, Category: "Rent", Subject: "String", IsSubscription: false, Details: "String"),
-                    Expense(Price: 120, PaymentDate: Date.now, Category: "Transport", Subject: "String", IsSubscription: false, Details: "String"),
-                    Expense(Price: 120, PaymentDate: Date.now, Category: "Transport", Subject: "Stringo", IsSubscription: false, Details: "String"),
-                    Expense(Price: 120, PaymentDate: Date.now, Category: "Food", Subject: "String", IsSubscription: false, Details: "String"),
-                    Expense(Price: 190, PaymentDate: Date.now, Category: "Fees", Subject: "String", IsSubscription: false, Details: "String"),
-                    Expense(Price: 90, PaymentDate: Date.now, Category: "Cable", Subject: "String", IsSubscription: false, Details: "String")
-                ])
-            }
+                PieChartView(expenses: expenses)
         }
-        
     }
 }
 
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().preferredColorScheme(.dark).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView(expenses: []).preferredColorScheme(.dark).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
 

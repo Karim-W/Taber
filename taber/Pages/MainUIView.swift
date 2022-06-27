@@ -9,12 +9,15 @@ import SwiftUI
 
 struct MainUIView: View {
     @State var selectedIndex:Int = 0
+    var _db:DB = DB()
+    @State var expenses:[Expense]=[]
     var body: some View {
         ZStack{
-            Color.init(red: 15/255, green: 118/255, blue: 110/255)
+            Color.init(red: 39/255, green: 39/255, blue: 42/255)
+            
             VStack{
                 ZStack{
-                    Color.init(red: 19/255, green: 78/255, blue: 74/255)
+                    Color.init(red: 24/255, green: 24/255, blue: 27/255)
                     VStack{
                         Spacer()
                         HStack{
@@ -30,25 +33,37 @@ struct MainUIView: View {
                         RoundedRectangle(cornerRadius: 16).foregroundColor(Color.white)
                         HStack{
                             Button("Home"){
-                             selectedIndex = 0
+                                selectedIndex = 0
                             }
                             Divider()
                             Button("Logs"){
-                                selectedIndex = 1
+                                selectedIndex=1
+                                
                             }
-
+                            
                         }.foregroundColor(Color.black)
                     }.frame(width:120,height: 40.0).padding()
                     Spacer()
                 }
                 if(selectedIndex == 0){
-                    ContentView()
+                    ContentView(expenses: expenses)
                 }else{
-                    Text("logs")
+                    ExpensesLogs(expenses: expenses)
                 }
                 Spacer()
+            }.task {
+                if (expenses.count>0){
+                    
+                }else{
+                    do{
+                        let e = try await GetExpenses()
+                        expenses = e
+                    }catch{
+                        print("err")
+                    }
+                }
+                
             }
-            
         }.edgesIgnoringSafeArea(.all).foregroundColor(.white)
         
     }

@@ -19,7 +19,12 @@
 		8A35026B28581A0300858DFE /* PieChartSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35026A28581A0300858DFE /* PieChartSlice.swift */; };
 		8A35026D285844D800858DFE /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35026C285844D800858DFE /* PieChartView.swift */; };
 		8A38C4E4285A274E007E6A14 /* PieChartLegend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A38C4E3285A274E007E6A14 /* PieChartLegend.swift */; };
+		8A7BD130286A4200009F0846 /* ExpensesLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7BD12F286A4200009F0846 /* ExpensesLogs.swift */; };
 		8A916FCF285A6BDC007737DC /* MainUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916FCE285A6BDC007737DC /* MainUIView.swift */; };
+		8A916FD2285A937C007737DC /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 8A916FD1285A937C007737DC /* SQLite */; };
+		8A916FD5285A93B0007737DC /* SQLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916FD4285A93B0007737DC /* SQLite.swift */; };
+		8A916FD7285AA732007737DC /* db.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 8A916FD6285AA732007737DC /* db.sqlite3 */; };
+		8ADDE3782869AF0F00C38DA8 /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADDE3772869AF0F00C38DA8 /* api.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +41,11 @@
 		8A35026A28581A0300858DFE /* PieChartSlice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartSlice.swift; sourceTree = "<group>"; };
 		8A35026C285844D800858DFE /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		8A38C4E3285A274E007E6A14 /* PieChartLegend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartLegend.swift; sourceTree = "<group>"; };
+		8A7BD12F286A4200009F0846 /* ExpensesLogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesLogs.swift; sourceTree = "<group>"; };
 		8A916FCE285A6BDC007737DC /* MainUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUIView.swift; sourceTree = "<group>"; };
+		8A916FD4285A93B0007737DC /* SQLite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLite.swift; sourceTree = "<group>"; };
+		8A916FD6285AA732007737DC /* db.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite3; sourceTree = "<group>"; };
+		8ADDE3772869AF0F00C38DA8 /* api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A916FD2285A937C007737DC /* SQLite in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +79,8 @@
 		8A3502502858174500858DFE /* taber */ = {
 			isa = PBXGroup;
 			children = (
+				8ADDE3762869AEF500C38DA8 /* client */,
+				8A916FD3285A9399007737DC /* Database */,
 				8A916FCD285A6BC6007737DC /* Pages */,
 				8A3502672858198000858DFE /* Views */,
 				8A350264285817C200858DFE /* Models */,
@@ -106,6 +118,7 @@
 				8A3502682858199C00858DFE /* PieChartUIView.swift */,
 				8A35026C285844D800858DFE /* PieChartView.swift */,
 				8A38C4E3285A274E007E6A14 /* PieChartLegend.swift */,
+				8A7BD12F286A4200009F0846 /* ExpensesLogs.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -116,6 +129,23 @@
 				8A916FCE285A6BDC007737DC /* MainUIView.swift */,
 			);
 			path = Pages;
+			sourceTree = "<group>";
+		};
+		8A916FD3285A9399007737DC /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				8A916FD6285AA732007737DC /* db.sqlite3 */,
+				8A916FD4285A93B0007737DC /* SQLite.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		8ADDE3762869AEF500C38DA8 /* client */ = {
+			isa = PBXGroup;
+			children = (
+				8ADDE3772869AF0F00C38DA8 /* api.swift */,
+			);
+			path = client;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,6 +164,9 @@
 			dependencies = (
 			);
 			name = taber;
+			packageProductDependencies = (
+				8A916FD1285A937C007737DC /* SQLite */,
+			);
 			productName = taber;
 			productReference = 8A35024E2858174500858DFE /* taber.app */;
 			productType = "com.apple.product-type.application";
@@ -162,6 +195,9 @@
 				Base,
 			);
 			mainGroup = 8A3502452858174500858DFE;
+			packageReferences = (
+				8A916FD0285A937B007737DC /* XCRemoteSwiftPackageReference "SQLite.swift" */,
+			);
 			productRefGroup = 8A35024F2858174500858DFE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -176,6 +212,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A916FD7285AA732007737DC /* db.sqlite3 in Resources */,
 				8A3502592858174800858DFE /* Preview Assets.xcassets in Resources */,
 				8A3502562858174800858DFE /* Assets.xcassets in Resources */,
 			);
@@ -189,9 +226,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A38C4E4285A274E007E6A14 /* PieChartLegend.swift in Sources */,
+				8A916FD5285A93B0007737DC /* SQLite.swift in Sources */,
 				8A35026D285844D800858DFE /* PieChartView.swift in Sources */,
 				8A35026B28581A0300858DFE /* PieChartSlice.swift in Sources */,
 				8A3502692858199C00858DFE /* PieChartUIView.swift in Sources */,
+				8A7BD130286A4200009F0846 /* ExpensesLogs.swift in Sources */,
 				8A350266285817E000858DFE /* expense.swift in Sources */,
 				8A916FCF285A6BDC007737DC /* MainUIView.swift in Sources */,
 				8A35025E2858174800858DFE /* taber.xcdatamodeld in Sources */,
@@ -199,6 +238,7 @@
 				8A3502542858174500858DFE /* ContentView.swift in Sources */,
 				8A07B50D2858FA2B00D226F1 /* PieTableEntry.swift in Sources */,
 				8A3502522858174500858DFE /* taberApp.swift in Sources */,
+				8ADDE3782869AF0F00C38DA8 /* api.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +441,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8A916FD0285A937B007737DC /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8A916FD1285A937C007737DC /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A916FD0285A937B007737DC /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		8A35025C2858174800858DFE /* taber.xcdatamodeld */ = {

@@ -11,8 +11,9 @@ struct PieChartLegend: View {
     var items:[PieTableEntry]
     var body: some View {
         ZStack{
-            Color.init(red: 15/255, green: 118/255, blue: 110/255)
+//            Color.init(red: 15/255, green: 118/255, blue: 110/255)
         VStack{
+            ScrollView{
             ForEach (items,id: \.self){ item in
                 HStack{
                     Text(item.name)
@@ -23,8 +24,10 @@ struct PieChartLegend: View {
                     }
                     
                 }.padding(.horizontal)
-                Divider().frame( height: 2).overlay(.white)
+                Divider().frame( height: 2).overlay(Color.init(hex: "#3f3f46"))
             }
+            Spacer()
+        }
         }
         }.edgesIgnoringSafeArea(.all)
         

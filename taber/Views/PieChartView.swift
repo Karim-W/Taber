@@ -10,7 +10,24 @@ import SwiftUI
 struct PieChartView: View {
     var expenses:[Expense]
     @State var Categories: [String: Double] = [:]
-    let colors = [Color.blue,Color.green,Color.yellow,Color.orange,Color.red,Color.pink,Color.purple]
+    let colors = [
+        Color.init(hex: "#9f1239")!,
+//        Color.init(hex: "#9d174d")!,
+        Color.init(hex: "#86198f")!,
+//        Color.init(hex: "#6b21a8")!,
+        Color.init(hex: "#5b21b6")!,
+//        Color.init(hex: "#3730a3")!,
+        Color.init(hex: "#1e40af")!,
+//        Color.init(hex: "#075985")!,
+        Color.init(hex: "#155e75")!,
+//        Color.init(hex: "#115e59")!,
+        Color.init(hex: "#065f46")!,
+//        Color.init(hex: "#166534")!,
+        Color.init(hex: "#3f6212")!,
+//        Color.init(hex: "#854d0e")!,
+        Color.init(hex: "#92400e")!,
+        Color.init(hex: "#9a3412")!,
+    ]
     @State var Total: Double = 0.0
     @State var slices:[PieChartSlice] = []
     @State var TEntries:[PieTableEntry] = []
@@ -18,20 +35,22 @@ struct PieChartView: View {
         
         VStack{
             HStack{
-                Spacer(minLength: 30)//ik this is bad, idk with so skewed 
+                Spacer(minLength: 30)//ik this is bad, idk with so skewed
                 GeometryReader { geometry in
                     ZStack{
                         ForEach (slices,id: \.self){ s in
                             PieChartSliceUIView(slice: s)
                         }
-                        Circle().fill(Color.init(red: 15/255, green: 118/255, blue: 110/255))
+                        Circle().fill(Color.init(hex: "#27272a")!)
                             .frame(width: geometry.size.width * 0.45, height: geometry.size.width * 0.45)
                         VStack {
                             Text("Total")
                                 .font(.title)
                                 .foregroundColor(Color.gray)
+                            
                             Text(String(format: "%.1f", Total))
                                 .font(.title)
+                            Text("AED")
                         }
                     }
                 }
@@ -49,11 +68,11 @@ struct PieChartView: View {
         Categories = [:]
         
         for e in expenses{
-            Total += e.Price
-            if (Categories[e.Category] != nil){
-                Categories[e.Category]! += e.Price
+            Total += e.price
+            if (Categories[e.category] != nil){
+                Categories[e.category]! += e.price
             }else{
-                Categories[e.Category] = e.Price
+                Categories[e.category] = e.price
             }
         }
         var index = 0
@@ -80,11 +99,43 @@ struct PieChartView: View {
 struct PieChartView_Previews: PreviewProvider {
     static var previews: some View {
         PieChartView(expenses: [
-            Expense(Price: 320, PaymentDate: Date.now, Category: "String", Subject: "String", IsSubscription: false, Details: "String"),
-            Expense(Price: 120, PaymentDate: Date.now, Category: "hehe", Subject: "String", IsSubscription: false, Details: "String"),
-            Expense(Price: 120, PaymentDate: Date.now, Category: "hehue", Subject: "Stringo", IsSubscription: false, Details: "String"),
-            Expense(Price: 120, PaymentDate: Date.now, Category: "hehe", Subject: "String", IsSubscription: false, Details: "String")
+            
         ])
-            .preferredColorScheme(.dark)
+        .preferredColorScheme(.dark)
+    }
+}
+
+extension Color {
+    init?(hex: String) {
+        var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
+        hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
+        
+        var rgb: UInt64 = 0
+        
+        var r: CGFloat = 0.0
+        var g: CGFloat = 0.0
+        var b: CGFloat = 0.0
+        var a: CGFloat = 1.0
+        
+        let length = hexSanitized.count
+        
+        guard Scanner(string: hexSanitized).scanHexInt64(&rgb) else { return nil }
+        
+        if length == 6 {
+            r = CGFloat((rgb & 0xFF0000) >> 16) / 255.0
+            g = CGFloat((rgb & 0x00FF00) >> 8) / 255.0
+            b = CGFloat(rgb & 0x0000FF) / 255.0
+            
+        } else if length == 8 {
+            r = CGFloat((rgb & 0xFF000000) >> 24) / 255.0
+            g = CGFloat((rgb & 0x00FF0000) >> 16) / 255.0
+            b = CGFloat((rgb & 0x0000FF00) >> 8) / 255.0
+            a = CGFloat(rgb & 0x000000FF) / 255.0
+            
+        } else {
+            return nil
+        }
+        
+        self.init(red: r, green: g, blue: b, opacity: a)
     }
 }
